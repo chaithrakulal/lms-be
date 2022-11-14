@@ -19,7 +19,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cors());
+
 connectDB();
 app.get("/", (req, res) => res.send("API Running"));
 app.use(
@@ -30,6 +30,15 @@ app.use(
       swaggerUi.generateHTML(await import("../build/swagger.json"))
     );
   }
+);
+
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.CORS_ORIGIN?.split("|").map((origin) => {
+      return new RegExp(`${origin?.trim()}$`);
+    }),
+  })
 );
 RegisterRoutes(app);
 app.use(function errorHandler(

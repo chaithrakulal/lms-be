@@ -18,7 +18,7 @@ class UsersService {
     getUserData(username, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let matchQuery = { username, password };
+                let matchQuery = { userName: username, password: password };
                 let fetchData = yield userModel_1.default.getUserData(matchQuery);
                 return fetchData;
             }

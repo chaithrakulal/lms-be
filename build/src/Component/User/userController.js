@@ -25,10 +25,10 @@ exports.UsersController = void 0;
 const tsoa_1 = require("tsoa");
 const userService_1 = require("./userService");
 let UsersController = class UsersController extends tsoa_1.Controller {
-    getUserData() {
+    getUserData(username, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let fetchData = yield new userService_1.UsersService().getUserData();
+                let fetchData = yield new userService_1.UsersService().getUserData(username, password);
                 this.setStatus(200);
                 return fetchData;
             }
@@ -77,8 +77,10 @@ let UsersController = class UsersController extends tsoa_1.Controller {
 __decorate([
     (0, tsoa_1.SuccessResponse)("200", "fetched"),
     (0, tsoa_1.Get)(),
+    __param(0, (0, tsoa_1.Query)()),
+    __param(1, (0, tsoa_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getUserData", null);
 __decorate([

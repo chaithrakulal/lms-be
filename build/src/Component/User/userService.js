@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const userModel_1 = __importDefault(require("./userModel"));
 class UsersService {
-    getUserData() {
+    getUserData(username, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let matchQuery = {};
+                let matchQuery = { username, password };
                 let fetchData = yield userModel_1.default.getUserData(matchQuery);
                 return fetchData;
             }

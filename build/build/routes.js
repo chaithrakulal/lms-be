@@ -48,7 +48,10 @@ function RegisterRoutes(app) {
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
     app.get('/users', ...((0, runtime_1.fetchMiddlewares)(userController_1.UsersController)), ...((0, runtime_1.fetchMiddlewares)(userController_1.UsersController.prototype.getUserData)), function UsersController_getUserData(request, response, next) {
-        const args = {};
+        const args = {
+            username: { "in": "query", "name": "username", "required": true, "dataType": "string" },
+            password: { "in": "query", "name": "password", "required": true, "dataType": "string" },
+        };
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         let validatedArgs = [];
         try {

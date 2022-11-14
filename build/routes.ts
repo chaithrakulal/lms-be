@@ -56,6 +56,8 @@ export function RegisterRoutes(app: express.Router) {
 
             function UsersController_getUserData(request: any, response: any, next: any) {
             const args = {
+                    username: {"in":"query","name":"username","required":true,"dataType":"string"},
+                    password: {"in":"query","name":"password","required":true,"dataType":"string"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

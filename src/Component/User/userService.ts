@@ -2,9 +2,9 @@ import { IUser, NewUserParams, UpdateUserParams } from "./userInterface";
 import User from "./userModel";
 
 export class UsersService {
-  async getUserData() {
+  async getUserData(username: string, password: string) {
     try {
-      let matchQuery = {};
+      let matchQuery = { username, password };
       let fetchData = await User.getUserData(matchQuery);
       return fetchData;
     } catch (error) {

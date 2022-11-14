@@ -9,6 +9,7 @@ import {
   Put,
   Path,
   Delete,
+  Query,
 } from "tsoa";
 import { NewUserParams, UpdateUserParams } from "./userInterface";
 import { UsersService } from "./userService";
@@ -17,9 +18,12 @@ import { UsersService } from "./userService";
 export class UsersController extends Controller {
   @SuccessResponse("200", "fetched")
   @Get()
-  public async getUserData() {
+  public async getUserData(
+    @Query() username: string,
+    @Query() password: string
+  ) {
     try {
-      let fetchData = await new UsersService().getUserData();
+      let fetchData = await new UsersService().getUserData(username, password);
       this.setStatus(200);
       return fetchData;
     } catch (error) {

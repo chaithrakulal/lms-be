@@ -31,15 +31,15 @@ app.use(
     );
   }
 );
-
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.CORS_ORIGIN?.split("|").map((origin) => {
-      return new RegExp(`${origin?.trim()}$`);
-    }),
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CORS_ORIGIN?.split("|").map((origin) => {
+//       return new RegExp(`${origin?.trim()}$`);
+//     }),
+//   })
+// );
 RegisterRoutes(app);
 app.use(function errorHandler(
   err: unknown,

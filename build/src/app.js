@@ -34,7 +34,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -54,12 +53,15 @@ app.get("/", (req, res) => res.send("API Running"));
 app.use("/lms/docs", swagger_ui_express_1.default.serve, (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.send(swagger_ui_express_1.default.generateHTML(yield Promise.resolve().then(() => __importStar(require("../build/swagger.json")))));
 }));
-app.use((0, cors_1.default)({
-    credentials: true,
-    origin: (_a = process.env.CORS_ORIGIN) === null || _a === void 0 ? void 0 : _a.split("|").map((origin) => {
-        return new RegExp(`${origin === null || origin === void 0 ? void 0 : origin.trim()}$`);
-    }),
-}));
+app.use((0, cors_1.default)());
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CORS_ORIGIN?.split("|").map((origin) => {
+//       return new RegExp(`${origin?.trim()}$`);
+//     }),
+//   })
+// );
 (0, routes_1.RegisterRoutes)(app);
 app.use(function errorHandler(err, req, res, next) {
     if (err instanceof tsoa_1.ValidateError) {

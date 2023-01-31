@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["run-script", "start", "-r", "ts-node/register"],
+      "args": ["${workspaceFolder}/src/app.ts"],
+      "program": "${workspaceFolder}\\src\\app.ts",
+      "outFiles": ["${workspaceRoot}/build/**/*.js"],
+      "smartStep": true,
+      "sourceMaps": true
+    },
+    {
+      "name": "Attach debugger to Nodemon",
+      "port": 9222,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "restart": true
+    }
+  ]
+}
